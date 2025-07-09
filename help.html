@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Help | Peace Action Network</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="page-header">
+        <div class="container">
+            <div class="logo-nav-container">
+                <div class="logo">
+                    <h1>Peace Action Network</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="help.html" class="active">Get Help</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="https://www.zeffy.com" target="_blank" rel="noopener noreferrer" class="donate-btn">Donate</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="page-title">
+                <h2>Resources for Refugees</h2>
+                <p>We're here to support your transition to life in Oregon</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <section class="help-services">
+            <div class="container">
+                <div class="help-intro">
+                    <h3>Comprehensive Support Services</h3>
+                    <p>At Peace Action Network, we provide a range of services to help refugees settle into their new communities. Below are the key areas where we can assist you and your family.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Housing Assistance -->
+                    <div class="service-card" id="housing">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>Housing Assistance</h4>
+                        <ul>
+                            <li>Temporary housing referrals</li>
+                            <li>Rental application support</li>
+                            <li>Tenant rights education</li>
+                            <li>Utility setup guidance</li>
+                        </ul>
+                        <a href="#housing-form" class="service-btn">Request Housing Help</a>
+                    </div>
+
+                    <!-- Employment Services -->
+                    <div class="service-card" id="employment">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>Employment Services</h4>
+                        <ul>
+                            <li>Job search assistance</li>
+                            <li>Resume preparation</li>
+                            <li>Interview coaching</li>
+                            <li>Workplace culture orientation</li>
+                        </ul>
+                        <a href="#employment-form" class="service-btn">Get Job Help</a>
+                    </div>
+
+                    <!-- Education Support -->
+                    <div class="service-card" id="education">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Education Support</h4>
+                        <ul>
+                            <li>School enrollment assistance</li>
+                            <li>ESL classes</li>
+                            <li>Youth tutoring programs</li>
+                            <li>Adult education referrals</li>
+                        </ul>
+                        <a href="#education-form" class="service-btn">Education Resources</a>
+                    </div>
+
+                    <!-- Legal Assistance -->
+                    <div class="service-card" id="legal">
+                        <div class="service-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h4>Legal Assistance</h4>
+                        <ul>
+                            <li>Immigration paperwork help</li>
+                            <li>Pro bono legal referrals</li>
+                            <li>Know Your Rights workshops</li>
+                            <li>Citizenship preparation</li>
+                        </ul>
+                        <a href="#legal-form" class="service-btn">Legal Support</a>
+                    </div>
+
+                    <!-- Health Services -->
+                    <div class="service-card" id="health">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h4>Health Services</h4>
+                        <ul>
+                            <li>Health insurance enrollment</li>
+                            <li>Medical provider referrals</li>
+                            <li>Mental health resources</li>
+                            <li>Women's health services</li>
+                        </ul>
+                        <a href="#health-form" class="service-btn">Health Resources</a>
+                    </div>
+
+                    <!-- Cultural Integration -->
+                    <div class="service-card" id="cultural">
+                        <div class="service-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h4>Cultural Integration</h4>
+                        <ul>
+                            <li>Cultural orientation</li>
+                            <li>Community mentors</li>
+                            <li>Language partners</li>
+                            <li>Social connection events</li>
+                        </ul>
+                        <a href="#cultural-form" class="service-btn">Integration Help</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-request">
+            <div class="container">
+                <h3>Request Assistance</h3>
+                <p>Please fill out the form below to let us know how we can help you. Our team will respond within 2 business days.</p>
+                
+                <form id="helpRequestForm" class="help-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="helpFirstName">First Name*</label>
+                            <input type="text" id="helpFirstName" name="helpFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="helpLastName">Last Name*</label>
+                            <input type="text" id="helpLastName" name="helpLastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="helpEmail">Email</label>
+                            <input type="email" id="helpEmail" name="helpEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="helpPhone">Phone*</label>
+                            <input type="tel" id="helpPhone" name="helpPhone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="helpLanguage">Preferred Language*</label>
+                        <select id="helpLanguage" name="helpLanguage" required>
+                            <option value="">Select language</option>
+                            <option value="english">English</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="arabic">Arabic</option>
+                            <option value="somali">Somali</option>
+                            <option value="russian">Russian</option>
+                            <option value="ukrainian">Ukrainian</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="helpService">Service Needed*</label>
+                        <select id="helpService" name="helpService" required>
+                            <option value="">Select service</option>
+                            <option value="housing">Housing Assistance</option>
+                            <option value="employment">Employment Services</option>
+                            <option value="education">Education Support</option>
+                            <option value="legal">Legal Assistance</option>
+                            <option value="health">Health Services</option>
+                            <option value="cultural">Cultural Integration</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="helpDetails">Please describe what you need help with*</label>
+                        <textarea id="helpDetails" name="helpDetails" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="helpConsent" name="helpConsent" required>
+                        <label for="helpConsent">I consent to Peace Action Network contacting me about my request*</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="emergency-resources">
+            <div class="container">
+                <h3>Emergency Resources</h3>
+                <div class="emergency-grid">
+                    <div class="emergency-card">
+                        <h4>24/7 Crisis Support</h4>
+                        <p>If you are in immediate danger or need urgent help:</p>
+                        <ul>
+                            <li><strong>Emergency:</strong> Dial 911</li>
+                            <li><strong>Crisis Line:</strong> 1-800-273-TALK (8255)</li>
+                            <li><strong>Domestic Violence:</strong> 1-800-799-SAFE (7233)</li>
+                        </ul>
+                    </div>
+                    <div class="emergency-card">
+                        <h4>Basic Needs</h4>
+                        <p>For immediate food, shelter, or clothing:</p>
+                        <ul>
+                            <li><strong>Portland Rescue Mission:</strong> (503) 906-7690</li>
+                            <li><strong>Oregon Food Bank:</strong> (503) 282-0555</li>
+                            <li><strong>Transition Projects:</strong> (503) 280-4700</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="language-resources">
+            <div class="container">
+                <h3>Multilingual Resources</h3>
+                <div class="language-options">
+                    <div class="language-option">
+                        <h4>Arabic Speakers</h4>
+                        <p>Contact our Arabic-speaking case manager:</p>
+                        <p><strong>Fatima Hassan</strong><br>
+                        (503) 555-0177<br>
+                        fatima@peaceactionnetwork.org</p>
+                    </div>
+                    <div class="language-option">
+                        <h4>Spanish Speakers</h4>
+                        <p>Contact our Spanish-speaking case manager:</p>
+                        <p><strong>Carlos Mendez</strong><br>
+                        (503) 555-0178<br>
+                        carlos@peaceactionnetwork.org</p>
+                    </div>
+                    <div class="language-option">
+                        <h4>Somali Speakers</h4>
+                        <p>Contact our Somali-speaking case manager:</p>
+                        <p><strong>Amina Farah</strong><br>
+                        (503) 555-0179<br>
+                        amina@peaceactionnetwork.org</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Peace Action Network</h3>
+                    <p>Helping refugees integrate into Oregon communities through resources, friendship, and support.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="help.html">Get Help</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="https://www.zeffy.com" target="_blank" rel="noopener noreferrer">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 14924 NW Deerfoot Lane, Portland, OR</p>
+                    <p><i class="fas fa-phone"></i> (503) 531-0910</p>
+                    <p><i class="fas fa-envelope"></i> pan.org.us@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Peace Action Network 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
