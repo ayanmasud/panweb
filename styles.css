@@ -771,3 +771,85 @@ nav ul li a:hover:not(.donate-btn)::after {
     padding: 8px 15px;
     border-radius: 5px;
 }
+
+.event-card {
+    width: 75%;
+    margin: 0; 
+    background-color: white;
+    border: 5px solid var(--coral);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-card img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+/* Past Events Gallery */
+.past-events-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 25px;
+    margin: 40px 0;
+    align-items: start; 
+}
+
+.gallery-item {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.gallery-image-container {
+    width: 100%;
+    display: flex;
+}
+
+.gallery-image-container img {
+    width: 100%;
+    height: auto; /* Natural height based on aspect ratio */
+    object-fit: contain; /* Prevents cropping */
+    display: block;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    flex-grow: 1; /* Pushes caption to bottom */
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .past-events-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .past-events-gallery {
+        grid-template-columns: 1fr;
+    }
+}
