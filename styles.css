@@ -1058,3 +1058,209 @@ nav ul li a:hover {
         font-size: 1.2rem;
     }
 }
+
+textarea {
+    max-width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    padding: 8px 12px;
+    width: 100%;
+}
+
+/* Add these mobile-specific styles to your existing CSS */
+
+/* Mobile Navigation */
+.mobile-nav-bar {
+    display: none;
+    background-color: var(--teal);
+    width: 100%;
+    padding: 15px 0;
+}
+
+.mobile-nav-bar ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-bar li {
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mobile-nav-bar a {
+    color: white;
+    font-weight: 500;
+    display: block;
+}
+
+.mobile-nav-bar .donate-btn {
+    background-color: var(--coral);
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px 20px;
+}
+
+@media (max-width: 768px) {
+    /* Hide desktop nav on mobile */
+    nav {
+        display: none;
+    }
+    
+    /* Show mobile nav */
+    .mobile-nav-bar {
+        display: block;
+    }
+    
+    /* Adjust header spacing */
+    .logo-nav-container {
+        padding: 15px;
+    }
+    
+    /* Stack mission stats */
+    .mission-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Make event cards full width */
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust footer layout */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Make buttons larger for touch */
+    .cta-button, .offer-button, .view-all-btn {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+    
+    /* Adjust form inputs */
+    .newsletter-form input, 
+    .newsletter-form button,
+    .help-form input,
+    .help-form textarea,
+    .help-form select {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    /* Make event cards stack */
+    .event-detail {
+        flex-direction: column;
+    }
+    
+    /* Adjust gallery layout */
+    .past-events-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Larger mobile devices (tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .past-events-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Very small devices */
+@media (max-width: 480px) {
+    .hero-message h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-message p {
+        font-size: 1rem !important;
+    }
+    
+    /* Make sure all clickable areas are at least 48px */
+    a, button, input[type="submit"] {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    /* Adjust spacing */
+    section {
+        padding: 40px 0;
+    }
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Behind content */
+  overflow: hidden;
+}
+
+#bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.video-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.video-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hide poster when video loads */
+.video-container.video-loaded .video-poster {
+  display: none;
+}
+
+/* Overlay container */
+.header-overlay {
+  position: relative; /* Changed from absolute */
+  z-index: 10; /* Above video */
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure all header content is above video */
+.logo-nav-container,
+.hero-message {
+  position: relative;
+  z-index: 20; /* Higher than overlay */
+}
+
+/* Mobile menu fix */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    z-index: 30; /* Above everything */
+  }
+  
+  nav.show {
+    z-index: 25; /* Above overlay but below mobile button */
+  }
+}

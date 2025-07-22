@@ -1,4 +1,4 @@
-// Prevent zooming
+// ===== MOBILE ZOOM PREVENTION =====
 document.addEventListener('touchmove', function (event) {
     if (event.scale !== 1) { 
         event.preventDefault(); 
@@ -15,10 +15,61 @@ document.addEventListener('touchend', function (event) {
     lastTouchEnd = now;
 }, false);
 
-// Mobile Navigation
+// ===== MAIN DOCUMENT READY FUNCTION =====
 document.addEventListener('DOMContentLoaded', function() {
-    // Create mobile nav bar
-    if (window.innerWidth <= 768px) {
+    // ===== TOUCH DEVICE DETECTION =====
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints;
+    }
+    
+    if (isTouchDevice()) {
+        document.body.classList.add('touch-device');
+    }
+
+    // ===== MOBILE NAVIGATION =====
+    const mobileMenuBtn = document.createElement('button');
+    mobileMenuBtn.className = 'mobile-menu-btn';
+    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    mobileMenuBtn.setAttribute('aria-label', 'Toggle menu');
+    
+    const header = document.querySelector('header');
+    if (header) {
+        // Add mobile menu button
+        header.prepend(mobileMenuBtn);
+        
+        // Get navigation elements
+        const nav = header.querySelector('nav');
+        const navLinks = nav ? nav.querySelectorAll('a') : [];
+        
+        // Toggle menu on button click
+        mobileMenuBtn.addEventListener('click', function() {
+            if (nav) {
+                nav.classList.toggle('show');
+                this.setAttribute('aria-expanded', nav.classList.contains('show'));
+            }
+        });
+        
+        // Close menu when link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav) {
+                    nav.classList.remove('show');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (nav && !nav.contains(e.target)) {
+                nav.classList.remove('show');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    // ===== CREATE MOBILE NAV BAR FOR SMALL SCREENS =====
+    if (window.innerWidth <= 768) {
         const mobileNavBar = document.createElement('div');
         mobileNavBar.className = 'mobile-nav-bar';
         
@@ -35,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileNavBar.innerHTML = navHTML;
         
         // Insert after header
-        const header = document.querySelector('header');
         if (header) {
             header.parentNode.insertBefore(mobileNavBar, header.nextSibling);
             
@@ -50,56 +100,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Video fallback for mobile
-    if (window.innerWidth <= 768px) {
-        const videoContainer = document.querySelector('.video-container');
-        if (videoContainer) {
-            // Replace with static image if needed
-            // videoContainer.innerHTML = '<img src="mobile-banner.jpg" alt="Peace Action Network">';
+    // ===== VIDEO FALLBACK FOR MOBILE =====
+    if (window.innerWidth <= 768) {
+        const videoContainer = document.querySelector('.video-container iframe');
+        const fallback = document.querySelector('.video-fallback');
+        if (videoContainer && fallback) {
+            videoContainer.style.display = 'none';
+            fallback.style.display = 'block';
         }
-    }
-});
-
-// Rest of your existing JavaScript...
-[PASTE ALL YOUR EXISTING JAVASCRIPT HERE]
-
-
-// Main JavaScript for Peace Action Network website - Mobile Optimized
-
-document.addEventListener('DOMContentLoaded', function() {
-    // ===== MOBILE MENU =====
-    const mobileMenuBtn = document.createElement('button');
-    mobileMenuBtn.className = 'mobile-menu-btn';
-    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    mobileMenuBtn.setAttribute('aria-label', 'Toggle menu');
-    
-    const header = document.querySelector('header');
-    if (header) {
-        header.prepend(mobileMenuBtn);
-        const nav = header.querySelector('nav');
-        const navLinks = nav.querySelectorAll('a');
-        
-        // Toggle menu on button click
-        mobileMenuBtn.addEventListener('click', function() {
-            nav.classList.toggle('show');
-            this.setAttribute('aria-expanded', nav.classList.contains('show'));
-        });
-        
-        // Close menu when link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('show');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                nav.classList.remove('show');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
     }
 
     // ===== SMOOTH SCROLLING =====
@@ -117,17 +125,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // Close mobile menu if open
-                const mobileMenu = document.querySelector('nav ul');
-                if (mobileMenu.classList.contains('show')) {
+                const mobileMenu = document.querySelector('nav');
+                if (mobileMenu && mobileMenu.classList.contains('show')) {
                     mobileMenu.classList.remove('show');
-                    document.querySelector('.mobile-menu-btn').setAttribute('aria-expanded', 'false');
+                    const menuBtn = document.querySelector('.mobile-menu-btn');
+                    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
                 }
             }
         });
     });
 
     // ===== FORM HANDLING =====
-    // Generic form submission handler
     const handleFormSubmit = (formId, successMessage) => {
         const form = document.getElementById(formId);
         if (form) {
@@ -155,9 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
     handleFormSubmit('newsletter-form', 'Thank you for subscribing to our newsletter!');
 
     // ===== CURRENT YEAR IN FOOTER =====
-    const yearSpan = document.querySelector('footer .footer-bottom p');
-    if (yearSpan) {
-        yearSpan.textContent = `Peace Action Network ${new Date().getFullYear()}`;
+    const yearElement = document.getElementById('current-year') || document.querySelector('footer .footer-bottom p');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
     }
 
     // ===== IMAGE LAZY LOADING FOR MOBILE =====
@@ -179,12 +187,87 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ===== TOUCH DEVICE DETECTION =====
-function isTouchDevice() {
-    return 'ontouchstart' in window || navigator.maxTouchPoints;
-}
+// ===== WINDOW RESIZE HANDLER =====
+window.addEventListener('resize', function() {
+    // Close mobile menu when resizing to larger screens
+    if (window.innerWidth > 768) {
+        const mobileMenu = document.querySelector('nav');
+        if (mobileMenu && mobileMenu.classList.contains('show')) {
+            mobileMenu.classList.remove('show');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+        }
+    }
+    
+    // Handle video fallback on resize
+    const videoContainer = document.querySelector('.video-container iframe');
+    const fallback = document.querySelector('.video-fallback');
+    if (window.innerWidth <= 768) {
+        if (videoContainer && fallback) {
+            videoContainer.style.display = 'none';
+            fallback.style.display = 'block';
+        }
+    } else {
+        if (videoContainer && fallback) {
+            videoContainer.style.display = 'block';
+            fallback.style.display = 'none';
+        }
+    }
+});
 
-// Add touch class to body if touch device
-if (isTouchDevice()) {
-    document.body.classList.add('touch-device');
-}
+document.addEventListener('DOMContentLoaded', function() {
+  const videoContainer = document.querySelector('.video-container');
+  const bgVideo = document.getElementById('bg-video');
+  
+  if (bgVideo) {
+    // Check if video can play
+    const videoCanPlay = () => {
+      return bgVideo.readyState > 0;
+    };
+    
+    // Handle video loading
+    bgVideo.addEventListener('canplay', function() {
+      videoContainer.classList.add('video-loaded');
+      try {
+        bgVideo.play();
+      } catch (e) {
+        console.log('Autoplay prevented:', e);
+      }
+    });
+    
+    // Fallback if video fails to load
+    setTimeout(() => {
+      if (!videoCanPlay()) {
+        videoContainer.classList.add('video-loaded');
+      }
+    }, 3000);
+    
+    // Ensure video plays when user interacts (for some mobile browsers)
+    document.addEventListener('click', function() {
+      if (videoCanPlay() && bgVideo.paused) {
+        bgVideo.play();
+      }
+    }, { once: true });
+  }
+});
+
+// Add this to your existing video handling code
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('bg-video');
+  
+  // Fix for iOS - prevents inline playback issues
+  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+  }
+  
+  // Ensure video stays properly sized
+  window.addEventListener('resize', function() {
+    if (video) {
+      video.style.width = '';
+      video.style.height = '';
+      video.style.minWidth = '100%';
+      video.style.minHeight = '100%';
+    }
+  });
+});
